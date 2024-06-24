@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}">
+    <title>Bookish-Bliss</title>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="hamburger-menu">
+                <div class="hamburger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <nav class="genre-menu">
+                    <ul>
+                        <li><a href="#">Fiction</a></li>
+                        <li><a href="#">Non-Fiction</a></li>
+                        <li><a href="#">Romance</a></li>
+                        <li><a href="#">Mystery</a></li>
+                        <li><a href="#">Sci-Fi</a></li>
+                        <li><a href="#">Fantasy</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="logo">
+                <h1>Bookish-Bliss</h1>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search books..." />
+            </div>
+            <div class="profile-cart">
+                <a href="/sign-up" class="profile-icon">
+                    <i class="fas fa-user"></i>
+                    <div class="profile-dropdown">
+                        <a href="#">Login</a>
+                        <a href="#">Sign Up</a>
+                    </div>
+                </a>
+                <a href="#" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+     
+    
+
+    <main>
+        <div class="book-grid">
+            <div class="book-item">
+                <img src="{{ url_for('static', filename='Books/diary_of_a_ceo.jpeg') }}" alt="Book Cover">
+                <div class="book-details">
+                    <h3>Diary of a ceo</h3>
+                    <p>KES 2,150</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            <div class="book-item">
+                <img src="{{ url_for('static', filename='Books/Dare to Trust Reihe - April Dawson.jpeg') }}" alt="Book Cover">
+                <div class="book-details">
+                    <h3>Dare to trust</h3>
+                    <p>KES 2,500</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            <div class="book-item">
+                <img src="{{ url_for('static', filename='Books/Ego is the enemy.jpeg') }}" alt="Book Cover">
+                <div class="book-details">
+                    <h3>Ego is the enemy</h3>
+                    <p>KES 1,590</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            <div class="book-item">
+                <img src="{{ url_for('static', filename='Books/It Ends With Us - Colleen Hoover.jpeg') }}" alt="Book Cover">
+                <div class="book-details">
+                    <h3>It ends with us</h3>
+                    <p>KES 1,590</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            <div class="book-item">
+                <img src="{{ url_for('static', filename='Books/Midnight Kisses.jpeg') }}" alt="Book Cover">
+                <div class="book-details">
+                    <h3>Midnight kisses</h3>
+                    <p>KES 4,200</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            <div class="book-item">
+                <img src="{{ url_for('static', filename='Books/Midnight Kisses.jpeg') }}" alt="Book Cover">
+                <div class="book-details">
+                    <h3>Midnight kisses</h3>
+                    <p>KES 4,200</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            <div class="book-item">
+                <img src="{{ url_for('static', filename='Books/Midnight Kisses.jpeg') }}" alt="Book Cover">
+                <div class="book-details">
+                    <h3>Midnight kisses</h3>
+                    <p>KES 4,200</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            <div class="book-item">
+                <img src="{{ url_for('static', filename='Books/Midnight Kisses.jpeg') }}" alt="Book Cover">
+                <div class="book-details">
+                    <h3>Midnight kisses</h3>
+                    <p>KES 4,200</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+
+
+
+
+            <h1>Novel Series</h1>
+            <div class="book-item">
+                <img src="{{ url_for('static', filename='Books/Dare to Trust Reihe - April Dawson.jpeg') }}" alt="Book Cover">
+                <div class="book-details">
+                    <h3>Dare to trust</h3>
+                    <p>KES 2,500</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const hamburgerIcon = document.querySelector('.hamburger-icon');
+        const genreMenu = document.querySelector('.genre-menu');
+
+        hamburgerIcon.addEventListener('click', () => {
+            genreMenu.classList.toggle('show');
+        });
+
+        const cartIcon = document.querySelector('.cart-icon');
+        const cartCount = document.querySelector('.cart-count');
+        let cartItems = 0;
+
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        addToCartButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                cartItems++;
+                cartCount.textContent = cartItems;
+            });
+        });
+    </script>
+</body>
+</html>
