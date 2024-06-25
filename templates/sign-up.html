@@ -13,20 +13,24 @@
             <div class="form-header">
                 <h2>Create account</h2>
             </div>
-            <form class="sign-up-form">
+            <form class="sign-up-form" method="POST" action="{{ url_for('sign') }}">
+                {{ form.hidden_tag() }}
                 <div class="form-field">
-                    <input type="text" placeholder="Your username" required>
+                    {{ form.username(placeholder="Your username") }}
                 </div>
                 <div class="form-field">
-                    <input type="email" placeholder="Your email" required>
+                    {{ form.email(placeholder="Your email") }}
                 </div>
                 <div class="form-field">
-                    <input type="password" placeholder="Password" required>
+                    {{ form.password(placeholder="Password") }}
                 </div>
-                <button type="submit" class="form-button">Sign Up</button>
+                <div class="form-field">
+                    {{ form.confirm_password(placeholder="Confirm Password") }}
+                </div>
+                {{ form.submit(class="form-button") }}
             </form>
             <div class="form-footer">
-                <p>Already have an account? <a href="/login" class="switch-form">Log in</a></p>
+                <p>Already have an account? <a href="{{ url_for('login') }}" class="switch-form">Log in</a></p>
             </div>
         </div>
     </div>
