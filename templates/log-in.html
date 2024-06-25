@@ -13,15 +13,25 @@
             <div class="form-header">
                 <h2>Log in</h2>
             </div>
-            <form class="log-in-form">
+            <form class="log-in-form" method="POST" action="{{ url_for('login') }}">
+                {{ form.hidden_tag() }}
                 <div class="form-field">
-                    <input type="email" placeholder="Email address" required>
+                    {{ form.email(placeholder="Email address") }}
                 </div>
                 <div class="form-field">
-                    <input type="password" placeholder="Password" required>
+                    {{ form.password(placeholder="Password") }}
                 </div>
-                <button type="submit" class="form-button">Log in</button>
+                {{ form.submit(class="form-button") }}
             </form>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
         </div>
     </div>
 </body>
