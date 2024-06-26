@@ -96,6 +96,10 @@ def admin():
         flash("Sorry must be an admin to access this page")
         return render_template('home.html')
 
+@app.route('/profile')
+@login_required
+def profile():
+    return render_template('profile.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
