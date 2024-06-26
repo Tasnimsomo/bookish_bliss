@@ -10,6 +10,10 @@ def landing():
 def home():
     return render_template('home.html')
 
+@app.route('/profile')
+def profile():
+    return render_template('profile.html')
+
 @app.route('/sign-up')
 def sign():
     return render_template('sign-up.html')
