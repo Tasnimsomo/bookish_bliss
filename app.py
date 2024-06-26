@@ -22,5 +22,9 @@ def sign():
 def login():
     return render_template('log-in.html')
 
+@app.route('/admin')
+def admin():
+    return render_template('admin.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
