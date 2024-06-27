@@ -8,5 +8,14 @@
 </head>
 <body>
     <h1>Are you an admin?</h1>
+    	 <nav>
+        <ul>
+            <li><a href="{{ url_for('add_book') }}">Add New Book</a></li>
+	    <li><a href="{{ url_for('remove_book') }}">Remove Book</a></li>
+	    <li><a href="{{ url_for('view_books') }}">View Book</a></li>
+            <li><a href="{{ url_for('increase_book_amount') }}">Increase Book Amount</a></li>
+	 </ul>
+    </nav>
+
 </body>
 </html>

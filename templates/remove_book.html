@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove Book</title>
+</head>
+<body>
+    <h1>Remove Book</h1>
+    <form method="POST">
+        <label for="book_id">Select Book to Remove:</label>
+        <select id="book_id" name="book_id" required>
+            {% for book in books %}
+            <option value="{{ book.id }}">{{ book.title }} by {{ book.author }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Remove Book">
+    </form>
+    <a href="{{ url_for('admin') }}">Back to Dashboard</a>
+</body>
+</html>
