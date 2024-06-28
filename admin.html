@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+    <title>Admin page</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Admin Dashboard</h1>
+        <nav>
+            <a href="{{ url_for('add_books') }}" class="btn">Add New Book</a>
+            <a href="{{ url_for('remove_book') }}" class="btn">Remove Book</a>
+            <a href="{{ url_for('view_books') }}" class="btn">View Books</a>
+            <a href="{{ url_for('increase_book_amount') }}" class="btn">Increase Book Amount</a>
+        </nav>
+    </div>
+</body>
+</html>
