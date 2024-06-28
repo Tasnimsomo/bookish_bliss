@@ -106,3 +106,66 @@ footer {
     font-size: 14px;
     margin-top: 20px;
 }
+ 
+@media only screen and (max-width: 600px) {
+    .text-overlay h1 {
+        font-size: 24px;
+        left: 20%;
+    }
+
+    .books img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .category {
+        font-size: 16px;
+    }
+
+    footer {
+        height: auto;
+        padding: 20px;
+    }
+
+    .tagline p, .quote {
+        font-size: 16px;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) and (max-width: 767px) {
+    .text-overlay h1 {
+        font-size: 28px;
+    }
+
+    .books img {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .main-image_2 img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .main-image_2 img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .main-image_2 img {
+        width: 100%;
+        height: auto;
+        max-width: 1200px;
+        max-height: 1000px;
+    }
+}
