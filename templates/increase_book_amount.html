@@ -3,23 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='increase_book_amount.css') }}">
     <title>Increase Book Amount</title>
 </head>
 <body>
-    <h1>Increase Book Amount</h1>
-    <form method="POST">
-        <label for="book_id">Select Book:</label>
-        <select id="book_id" name="book_id" required>
-            {% for book in books %}
-            <option value="{{ book.id }}">{{ book.title }} by {{ book.author }}</option>
-            {% endfor %}
-        </select><br>
-        
-        <label for="amount">Amount to Increase:</label>
-        <input type="number" id="amount" name="amount" required><br>
-        
-        <input type="submit" value="Increase Amount">
-    </form>
-    <a href="{{ url_for('admin') }}">Back to Dashboard</a>
+    <div class="container">
+        <h1>Increase Book Amount</h1>
+        <form method="POST">
+            <div class="form-group">
+                <label for="book_id">Select Book</label>
+                <select id="book_id" name="book_id" value="select an option" required>
+                    {% for book in books %}
+                    <option value="{{ book.id }}">{{ book.title }} by {{ book.author }}</option>
+                    {% endfor %}
+                    <option value="Nairobi">Atomic Habits</option>
+                    <option value="Nairobi">Diary of a CEO</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="amount">Amount to Increase</label>
+                <input type="number" id="amount" name="amount" step="500" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Increase Amount</button>
+        </form>
+        <a href="{{ url_for('admin') }}" class="btn btn-secondary">Back to Dashboard</a>
+    </div>
 </body>
 </html>
