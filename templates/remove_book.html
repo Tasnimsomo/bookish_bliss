@@ -16,8 +16,6 @@
                     {% for book in books %}
                     <option value="{{ book.id }}">{{ book.title }} by {{ book.author }}</option>
                     {% endfor %}
-                    <option value="books">Atomic Habits</option>
-                    <option value="books">Diary of a CEO</option>
                 </select>
             </div>
             <button type="submit" class="btn btn-danger">Remove Book</button>
