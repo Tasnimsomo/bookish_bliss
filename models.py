@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-from sqlalchemy import create_engine, Column, Integer, String, Float, DateTime, ForeignKey, Table
+from sqlalchemy import create_engine, Column, Integer, String, Float, DateTime, ForeignKey, Table, Text
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
 from datetime import datetime
@@ -27,7 +27,6 @@ class Author(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, nullable=False)
     bio = Column(String)
-    books = relationship("Book", back_populates="author")
 
 class BookCategory(Base):
     __tablename__ = 'book_categories'
@@ -41,11 +40,11 @@ class Book(Base):
     __tablename__ = 'books'
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String, nullable=False)
-    author_id = Column(Integer, ForeignKey('authors.id'))
+    author = Column(String)  # This will store the author's name directly
     price = Column(Float, nullable=False)
     quantity = Column(Integer, nullable=False)
-    description = Column(String)
-    author = relationship("Author", back_populates="books")
+    description = Column(Text)
+
     reviews = relationship("Review", back_populates="book")
     order_items = relationship("OrderItem", back_populates="book")
     cart_items = relationship("CartItem", back_populates="book")

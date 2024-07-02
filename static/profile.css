@@ -15,7 +15,7 @@ body, html {
 }
 
 .background-image {
-  width: 100%;
+  width: 2200x;
   height: 100%;
   object-fit: cover;
 }
@@ -77,32 +77,4 @@ main {
   color: #228B22;
   font-weight: bold;
   display: block;
-}
-
-.login-option a:hover {
-  background-color: #e0d0c0;
-}
-
-.user-profile {
-  background-color: #f0e0d0;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  text-align: center;
-}
-
-.btn {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #228B22;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  margin-top: 10px;
-}
-
-@media (max-width: 600px) {
-  .login-options, .user-profile {
-      width: 90%;
-  }
 }

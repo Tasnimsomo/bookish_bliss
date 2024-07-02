@@ -5,7 +5,8 @@ from forms import RegisterForm, LoginForm
 from flask_bcrypt import Bcrypt
 import os
 from database import session as db_session
-from models import User, Book
+from models import User, Book, Author
+from flask_migrate import Migrate
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
@@ -82,6 +83,10 @@ def reset_users():
     db_session.commit()
     print("All users deleted")
 
+def reset_books():
+    db_session.query(Book).delete()
+    db_session.commit()
+    print("All books deleted")
 
 @app.route('/admin')
 @login_required
@@ -97,6 +102,7 @@ def admin():
 def profile():
     return render_template('profile.html')
 
+
 @app.route('/add_book', methods=['GET', 'POST'])
 @login_required
 def add_book():
@@ -106,18 +112,19 @@ def add_book():
     
     if request.method == 'POST':
         title = request.form['title']
-        author = request.form['author']
-        price = float(request.form['price'])
+        author_name = request.form['author']
+        price = int(request.form['price'])
         quantity = int(request.form['quantity'])
+        description = request.form['description']
         
-        new_book = Book(title=title, author=author, price=price, quantity=quantity)
+        # Create the new book with the author name directly
+        new_book = Book(title=title, author=author_name, price=price, quantity=quantity, description=description)
         db_session.add(new_book)
         db_session.commit()
         
         flash('Book added successfully!', 'success')
-        return redirect(url_for('admin'))
     
-    return render_template('add_book.html')
+    return render_template('add_book.html')  # Assuming you have this template
 
 @app.route('/view_books')
 @login_required
@@ -173,5 +180,68 @@ def increase_book_amount():
     books = db_session.query(Book).all()
     return render_template('increase_book_amount.html', books=books)
 
+@app.route('/cart', methods=['GET', 'POST'])
+@login_required
+def cart():
+    if request.method == 'POST':
+        if 'clear_all' in request.form:
+            session.pop('cart', None)  # Clear the cart session
+            return redirect(url_for('cart'))
+
+        if 'update_quantity' in request.form:
+            item_index = int(request.form['item_index'])
+            new_quantity = int(request.form['new_quantity'])
+            cart = session.get('cart', [])
+            if 0 <= item_index < len(cart):
+                cart[item_index]['quantity'] = new_quantity
+                session['cart'] = cart
+                # Recalculate total cost, tax, and shipping
+                total = sum(item['price'] * item['quantity'] for item in cart)
+                tax = total * 0.1
+                shipping = 15
+                return jsonify({'success': True, 'total': total, 'tax': tax, 'shipping': shipping})
+            return jsonify({'success': False})
+
+        if 'remove_item' in request.form:
+            item_index = int(request.form['item_index'])
+            cart = session.get('cart', [])
+            if 0 <= item_index < len(cart):
+                removed_item = cart.pop(item_index)
+                session['cart'] = cart
+                print(f"Removed item: {removed_item['name']}")
+                return jsonify({'success': True})
+            return jsonify({'success': False})
+
+        product_name = request.form['product_name']
+        product_price = int(request.form['product_price'])
+        cart = session.get('cart', [])
+
+        if cart:  # Check if the cart is not empty
+            total = sum(item['price'] * item['quantity'] for item in cart)
+            tax = total * 0.1
+            shipping = 15
+        else:
+            total = 0
+            tax = 0
+            shipping = 0
+        # Check if the product already exists in the cart
+        existing_item = next((item for item in cart if item['name'] == product_name and item['price'] == product_price), None)
+
+        if existing_item:
+            # If the product exists, increment its quantity
+            existing_item['quantity'] += 1
+        else:
+            # If the product doesn't exist, add a new item to the cart
+            cart.append({'name': product_name, 'price': product_price, 'quantity': 1})
+
+        session['cart'] = cart
+        return redirect(url_for('cart'))
+
+    cart = session.get('cart', [])
+    total = sum(item['price'] * item['quantity'] for item in cart)
+    tax = total * 0.1
+    shipping = 15
+    return render_template('cart.html', cart=cart, total=total, tax=tax, shipping=shipping)
+    
 if __name__ == '__main__':
     app.run(debug=True)
