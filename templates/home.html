@@ -17,16 +17,18 @@
                     <span></span>
                 </div>
                 <nav class="genre-menu">
+                    <h3>Browse Categories</h3>
                     <ul>
                         <li><a href="#">Fiction</a></li>
                         <li><a href="#">Non-Fiction</a></li>
                         <li><a href="#">Romance</a></li>
                         <li><a href="#">Mystery</a></li>
                         <li><a href="#">Sci-Fi</a></li>
-                        <li><a href="#">Fantasy</a></li>
+                        <li><a href="#">Self Help</a></li>
                     </ul>
                 </nav>
             </div>
+            
             <div class="logo">
                 <h1>Bookish-Bliss</h1>
             </div>
@@ -37,116 +39,561 @@
                 <a href="{{ url_for('profile') }}" class="profile-icon">
                     <i class="fas fa-user"></i>
                 </a>
-                <a href="#" class="cart-icon">
+                <a href="cart" class="cart-icon">
                     <i class="fas fa-shopping-cart"></i>
                 </a>
             </div>
         </div>
     </header>
-     
-    
 
-    <main>
-        <div class="book-grid">
-            <div class="book-item">
-                <img src="{{ url_for('static', filename='Books/diary_of_a_ceo.jpeg') }}" alt="Book Cover">
-                <div class="book-details">
-                    <h3>Diary of a ceo</h3>
-                    <p>KES 2,150</p>
-                    <button class="add-to-cart">Add to Cart</button>
+    <section>
+        <section class="product-grid">
+            
+            <!-- mysterry -->
+            <div class="product-item">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='Books/The Silent Patient.jpeg') }}" alt="Chandelier 3">
+                </a>
+                <div class="caption">
+                    <p>Woman accused of murder stops speaking, unraveling psychological mystery.</p>
+                    <p class="price">Ksh 1000</p>
+                    <form action="{{ url_for('cart') }}" method="post">
+                        <input type="hidden" name="product_name" value="">
+                        <input type="hidden" name="product_price" value="Ksh 3500">
+                        <button class="add-to-cart" type="submit">Add to Cart</button>
+                    </form>
                 </div>
             </div>
-            <div class="book-item">
-                <img src="{{ url_for('static', filename='Books/Dare to Trust Reihe - April Dawson.jpeg') }}" alt="Book Cover">
-                <div class="book-details">
-                    <h3>Dare to trust</h3>
-                    <p>KES 2,500</p>
-                    <button class="add-to-cart">Add to Cart</button>
+            <div class="product-item">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='Books/Big Little lies.jpeg') }}" alt="Chandelier 3">
+                </a>
+                <div class="caption">
+                    <p>Three women's lives unravel leading to murder in a seaside town.</p>
+                    <p class="price">Ksh 1500</p>
+                    <form action="{{ url_for('cart') }}" method="post">
+                        <input type="hidden" name="product_name" value="">
+                        <input type="hidden" name="product_price" value="Ksh 2000">
+                        <button class="add-to-cart" type="submit">Add to Cart</button>
+                    </form>
                 </div>
             </div>
-            <div class="book-item">
-                <img src="{{ url_for('static', filename='Books/Ego is the enemy.jpeg') }}" alt="Book Cover">
-                <div class="book-details">
-                    <h3>Ego is the enemy</h3>
-                    <p>KES 1,590</p>
-                    <button class="add-to-cart">Add to Cart</button>
-                </div>
-            </div>
-            <div class="book-item">
-                <img src="{{ url_for('static', filename='Books/It Ends With Us - Colleen Hoover.jpeg') }}" alt="Book Cover">
-                <div class="book-details">
-                    <h3>It ends with us</h3>
-                    <p>KES 1,590</p>
-                    <button class="add-to-cart">Add to Cart</button>
-                </div>
-            </div>
-            <div class="book-item">
-                <img src="{{ url_for('static', filename='Books/Midnight Kisses.jpeg') }}" alt="Book Cover">
-                <div class="book-details">
-                    <h3>Midnight kisses</h3>
-                    <p>KES 4,200</p>
-                    <button class="add-to-cart">Add to Cart</button>
-                </div>
-            </div>
-            <div class="book-item">
-                <img src="{{ url_for('static', filename='Books/Midnight Kisses.jpeg') }}" alt="Book Cover">
-                <div class="book-details">
-                    <h3>Midnight kisses</h3>
-                    <p>KES 4,200</p>
-                    <button class="add-to-cart">Add to Cart</button>
-                </div>
-            </div>
-            <div class="book-item">
-                <img src="{{ url_for('static', filename='Books/Midnight Kisses.jpeg') }}" alt="Book Cover">
-                <div class="book-details">
-                    <h3>Midnight kisses</h3>
-                    <p>KES 4,200</p>
-                    <button class="add-to-cart">Add to Cart</button>
-                </div>
-            </div>
-            <div class="book-item">
-                <img src="{{ url_for('static', filename='Books/Midnight Kisses.jpeg') }}" alt="Book Cover">
-                <div class="book-details">
-                    <h3>Midnight kisses</h3>
-                    <p>KES 4,200</p>
-                    <button class="add-to-cart">Add to Cart</button>
+            <div class="product-item">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='Books/Girl with the Dragon Tattoo by Stieg Larsson.jpeg') }}" alt="Chandelier 3">
+                </a>
+                <div class="caption">
+                    <p>Journalist and hacker investigate mysterious disappearance in Sweden.</p>
+                    <p class="price">Ksh 1500</p>
+                    <form action="{{ url_for('cart') }}" method="post">
+                        <input type="hidden" name="product_name" value="">
+                        <input type="hidden" name="product_price" value="Ksh 2500">
+                        <button class="add-to-cart" type="submit">Add to Cart</button>
+                    </form>
                 </div>
             </div>
 
-
-
-
-            <h1>Novel Series</h1>
-            <div class="book-item">
-                <img src="{{ url_for('static', filename='Books/Dare to Trust Reihe - April Dawson.jpeg') }}" alt="Book Cover">
-                <div class="book-details">
-                    <h3>Dare to trust</h3>
-                    <p>KES 2,500</p>
-                    <button class="add-to-cart">Add to Cart</button>
+            <div class="product-item">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='Books/In the Woods _ by Tana French.jpeg') }}" alt="Chandelier 3">
+                </a>
+                <div class="caption">
+                    <p>Detective investigates crime while haunted by his traumatic past.</p>
+                    <p class="price">Ksh 1500</p>
+                    <form action="{{ url_for('cart') }}" method="post">
+                        <input type="hidden" name="product_name" value="">
+                        <input type="hidden" name="product_price" value="Ksh 1500">
+                        <button class="add-to-cart" type="submit">Add to Cart</button>
+                    </form>
                 </div>
             </div>
-        </div>
+
+            <div class="product-item">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='Books/Gone Girl.jpeg') }}" alt="Chandelier 3">
+                </a>
+                <div class="caption">
+                    <p>Woman's disappearance reveals dark secrets about her marriage and life.</p>
+                    <p class="price">Ksh 1500</p>
+                    <form action="{{ url_for('cart') }}" method="post">
+                        <input type="hidden" name="product_name" value="">
+                        <input type="hidden" name="product_price" value="Ksh 1500">
+                        <button class="add-to-cart" type="submit">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="product-item">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='Books/The Da Vinci Code – Dan Brown.jpeg') }}" alt="Chandelier 3">
+                </a>
+                <div class="caption">
+                    <p>Secret societies and hidden messages in artworks unravel historical mysteries.</p>
+                    <p class="price">Ksh 500</p>
+                    <form action="{{ url_for('cart') }}" method="post">
+                        <input type="hidden" name="product_name" value="">
+                        <input type="hidden" name="product_price" value="Ksh 1500">
+                        <button class="add-to-cart" type="submit">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+            
+
+            <!-- Sci-Fi -->
+            <div class="product-item">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='Books/Dune.jpeg') }}" alt="Chandelier 3">
+                </a>
+                <div class="caption">
+                    <p>Epic struggle for control of desert planet Arrakis and its resources.</p>
+                    <p class="price">Ksh 2500</p>
+                    <form action="{{ url_for('cart') }}" method="post">
+                        <input type="hidden" name="product_name" value="">
+                        <input type="hidden" name="product_price" value="Ksh 1000">
+                        <button class="add-to-cart" type="submit">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+            <div class="product-item">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='Books/Neuromancer.jpeg') }}" alt="Chandelier 3">
+                </a>
+                <div class="caption">
+                    <p>Cyberpunk adventure with artificial intelligence, virtual reality, and corporate espionage.</p>
+                    <p class="price">Ksh 2000</p>
+                    <form action="{{ url_for('cart') }}" method="post">
+                        <input type="hidden" name="product_name" value="">
+                        <input type="hidden" name="product_price" value="Ksh 1500">
+                        <button class="add-to-cart" type="submit">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+            <div class="product-item">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='Books/Ender\'s Game.jpeg') }}" alt="Chandelier 3">
+                </a>
+                <div class="caption">
+                    <p>Young boy trained to lead military against alien invasion.</p>
+                    <p class="price">Ksh 3000</p>
+                    <form action="{{ url_for('cart') }}" method="post">
+                        <input type="hidden" name="product_name" value="">
+                        <input type="hidden" name="product_price" value="Ksh 1500">
+                        <button class="add-to-cart" type="submit">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+            <div class="product-item">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='Books/The Left Hand Of Darkness.jpeg') }}" alt="Chandelier 3">
+                </a>
+                <div class="caption">
+                    <p>Exploration of gender and society on a distant planet.</p>
+                    <p class="price">Ksh 3500</p>
+                    <form action="{{ url_for('cart') }}" method="post">
+                        <input type="hidden" name="product_name" value="">
+                        <input type="hidden" name="product_price" value="Ksh 1500">
+                        <button class="add-to-cart" type="submit">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+            <div class="product-item">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='Books/snow crash.jpeg') }}" alt="Chandelier 3">
+                </a>
+                <div class="caption">
+                    <p>Cyberpunk tale of a computer virus affecting both virtual and real worlds.</p>
+                    <p class="price">Ksh 2000</p>
+                    <form action="{{ url_for('cart') }}" method="post">
+                        <input type="hidden" name="product_name" value="">
+                        <input type="hidden" name="product_price" value="Ksh 1500">
+                        <button class="add-to-cart" type="submit">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+            <div class="product-item">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='Books/Foundation.jpeg') }}" alt="Chandelier 3">
+                </a>
+                <div class="caption">
+                    <p>Galactic Empire's fall and rise predicted using psychohistory science.</p>
+                    <p class="price">Ksh 2500</p>
+                    <form action="{{ url_for('cart') }}" method="post">
+                        <input type="hidden" name="product_name" value="">
+                        <input type="hidden" name="product_price" value="Ksh 1500">
+                        <button class="add-to-cart" type="submit">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- fantasy -->
+            <div class="product-item">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='Books/The Way of Kings.jpeg') }}" alt="Chandelier 3">
+                </a>
+                <div class="caption">
+                    <p>Richly detailed world and complex characters in epic fantasy series.</p>
+                    <p class="price">Ksh 3500</p>
+                    <form action="{{ url_for('cart') }}" method="post">
+                        <input type="hidden" name="product_name" value="">
+                        <input type="hidden" name="product_price" value="Ksh 1500">
+                        <button class="add-to-cart" type="submit">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+            <div class="product-item">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='Books/THE HOBBIT') }}" alt="Chandelier 3">
+                </a>
+                <div class="caption">
+                    <p> Bilbo Baggins embarks on a quest to reclaim lost treasure.</p>
+                    <p class="price">Ksh 2500</p>
+                    <form action="{{ url_for('cart') }}" method="post">
+                        <input type="hidden" name="product_name" value="">
+                        <input type="hidden" name="product_price" value="Ksh 1500">
+                        <button class="add-to-cart" type="submit">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+            <div class="product-item">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='Books/Mistborn.jpeg') }}" alt="Chandelier 3">
+                </a>
+                <div class="caption">
+                    <p>Rebellion against Lord Ruler in ash-fallen, mist-dominated world.</p>
+                    <p class="price">Ksh 1500</p>
+                    <form action="{{ url_for('cart') }}" method="post">
+                        <input type="hidden" name="product_name" value="">
+                        <input type="hidden" name="product_price" value="Ksh 1500">
+                        <button class="add-to-cart" type="submit">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+            <div class="product-item">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='Books/The Name of the Wind.jpeg') }}" alt="Chandelier 3">
+                </a>
+                <div class="caption">
+                    <p>Adventures of Kvothe, a gifted young man, unfold in fantasy world.</p>
+                    <p class="price">Ksh 1000</p>
+                    <form action="{{ url_for('cart') }}" method="post">
+                        <input type="hidden" name="product_name" value="">
+                        <input type="hidden" name="product_price" value="Ksh 1500">
+                        <button class="add-to-cart" type="submit">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+            <div class="product-item">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='Books/Harry Potter and the Sorcerer\'s Stone.jpeg') }}" alt="Chandelier 3">
+                </a>
+                <div class="caption">
+                    <p>Young wizard's first year at Hogwarts, discovering magical heritage.</p>
+                    <p class="price">Ksh 2000</p>
+                    <form action="{{ url_for('cart') }}" method="post">
+                        <input type="hidden" name="product_name" value="">
+                        <input type="hidden" name="product_price" value="Ksh 1500">
+                        <button class="add-to-cart" type="submit">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+            <div class="product-item">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='Books/A Game of Thrones.jpeg') }}" alt="Chandelier 3">
+                </a>
+                <div class="caption">
+                    <p>Political intrigue, warfare, and dragons in a complex fantasy realm.</p>
+                    <p class="price">Ksh 2500</p>
+                    <form action="{{ url_for('cart') }}" method="post">
+                        <input type="hidden" name="product_name" value="">
+                        <input type="hidden" name="product_price" value="Ksh 1500">
+                        <button class="add-to-cart" type="submit">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Romance -->
+            <div class="product-item">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='Books/It Ends With Us.jpeg') }}" alt="Chandelier 3">
+                </a>
+                <div class="caption">
+                    <p>Woman navigates love and abuse, uncovering her mother's painful past.</p>
+                    <p class="price">Ksh 500</p>
+                    <form action="{{ url_for('cart') }}" method="post">
+                        <input type="hidden" name="product_name" value="">
+                        <input type="hidden" name="product_price" value="Ksh 1500">
+                        <button class="add-to-cart" type="submit">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="product-item">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='Books/Me Before You.jpeg') }}" alt="Chandelier 3">
+                </a>
+                <div class="caption">
+                    <p>Young woman becomes caregiver for paralyzed man, sparking romance</p>
+                    <p class="price">Ksh 1500</p>
+                    <form action="{{ url_for('cart') }}" method="post">
+                        <input type="hidden" name="product_name" value="">
+                        <input type="hidden" name="product_price" value="Ksh 1500">
+                        <button class="add-to-cart" type="submit">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+            <div class="product-item">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='Books/twilight.jpeg') }}" alt="Chandelier 3">
+                </a>
+                <div class="caption">
+                    <p>Teenage girl and vampire fall in love, sparking phenomenon..</p>
+                    <p class="price">Ksh 1500</p>
+                    <form action="{{ url_for('cart') }}" method="post">
+                        <input type="hidden" name="product_name" value="">
+                        <input type="hidden" name="product_price" value="Ksh 1500">
+                        <button class="add-to-cart" type="submit">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+            <div class="product-item">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='Books/outlander.jpeg') }}" alt="Chandelier 3">
+                </a>
+                <div class="caption">
+                    <p>Time-travel romance transports Claire Randall from 1945 to 1743 Scotland.</p>
+                    <p class="price">Ksh 1500</p>
+                    <form action="{{ url_for('cart') }}" method="post">
+                        <input type="hidden" name="product_name" value="">
+                        <input type="hidden" name="product_price" value="Ksh 1500">
+                        <button class="add-to-cart" type="submit">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+            <div class="product-item">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='Books/The Hating Game.jpeg') }}" alt="Chandelier 3">
+                </a>
+                <div class="caption">
+                    <p>Coworkers' rivalry turns to love in a romantic comedy.</p>
+                    <p class="price">Ksh 1500</p>
+                    <form action="{{ url_for('cart') }}" method="post">
+                        <input type="hidden" name="product_name" value="">
+                        <input type="hidden" name="product_price" value="Ksh 1500">
+                        <button class="add-to-cart" type="submit">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+            <div class="product-item">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='Books/The notebook.jpeg') }}" alt="Chandelier 3">
+                </a>
+                <div class="caption">
+                    <p>Romantic drama of enduring love story across decades.</p>
+                    <p class="price">Ksh 1500</p>
+                    <form action="{{ url_for('cart') }}" method="post">
+                        <input type="hidden" name="product_name" value="">
+                        <input type="hidden" name="product_price" value="Ksh 1500">
+                        <button class="add-to-cart" type="submit">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Self-help books -->
+            <div class="product-item">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='Books/The 7 Habits of Highly Effective People.jpeg') }}" alt="Chandelier 3">
+                </a>
+                <div class="caption">
+                    <p>Presents habits for personal and professional effectiveness and productivity.</p>
+                    <p class="price">Ksh2500</p>
+                    <form action="{{ url_for('cart') }}" method="post">
+                        <input type="hidden" name="product_name" value="">
+                        <input type="hidden" name="product_price" value="Ksh 2000">
+                        <button class="add-to-cart" type="submit">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+            <div class="product-item">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='Books/Think and Grow Rich.jpeg') }}" alt="Chandelier 3">
+                </a>
+                <div class="caption">
+                    <p>Discusses mindset and principles for achieving financial success and personal goals.</p>
+                    <p class="price">Ksh 2000</p>
+                    <form action="{{ url_for('cart') }}" method="post">
+                        <input type="hidden" name="product_name" value="">
+                        <input type="hidden" name="product_price" value="Ksh 2000">
+                        <button class="add-to-cart" type="submit">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+            <div class="product-item">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='Books/Atomic Habits.jpeg') }}" alt="Chandelier 3">
+                </a>
+                <div class="caption">
+                    <p>Explores small, incremental changes to build habits and achieve success.</p>
+                    <p class="price">Ksh 2500</p>
+                    <form action="{{ url_for('cart') }}" method="post">
+                        <input type="hidden" name="product_name" value="">
+                        <input type="hidden" name="product_price" value="Ksh 1500">
+                        <button class="add-to-cart" type="submit">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+            <div class="product-item">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='Books/Good Vibes, Good Life.jpeg') }}" alt="Chandelier 3">
+                </a>
+                <div class="caption">
+                    <p>Explores positivity, self-love, and manifesting your dreams for a better life.</p>
+                    <p class="price">Ksh 3000</p>
+                    <form action="{{ url_for('cart') }}" method="post">
+                        <input type="hidden" name="product_name" value="">
+                        <input type="hidden" name="product_price" value="Ksh 3500">
+                        <button class="add-to-cart" type="submit">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+            <div class="product-item">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='Books/How To Win Friends & Influence People.jpeg') }}" alt="Chandelier 3">
+                </a>
+                <div class="caption">
+                    <p>Offers principles for improving social skills and building better relationships.</p>
+                    <p class="price">Ksh 1500</p>
+                    <form action="{{ url_for('cart') }}" method="post">
+                        <input type="hidden" name="product_name" value="">
+                        <input type="hidden" name="product_price" value="Ksh 1500">
+                        <button class="add-to-cart" type="submit">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+            <div class="product-item">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='Books/The Psychology of Money.jpeg') }}" alt="Chandelier 3">
+                </a>
+                <div class="caption">
+                    <p>xamines how people think about money and make financial decisions.</p>
+                    <p class="price">Ksh 1000</p>
+                    <form action="{{ url_for('cart') }}" method="post">
+                        <input type="hidden" name="product_name" value="">
+                        <input type="hidden" name="product_price" value="Ksh 1000">
+                        <button class="add-to-cart" type="submit">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Fiction Novels Section -->
+            <div class="product-item">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='Books/The road.jpeg') }}" alt="Chandelier 3">
+                </a>
+                <div class="caption">
+                    <p>Father and son journey through post-apocalyptic America for survival.
+                    </p>
+                    <p class="price">Ksh 1500</p>
+                    <form action="{{ url_for('cart') }}" method="post">
+                        <input type="hidden" name="product_name" value="Father and son journey through post-apocalyptic America for survival.
+                        ">
+                        <input type="hidden" name="product_price" value="Ksh 1500">
+                        <button class="add-to-cart" type="submit">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+            <div class="product-item">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='Books/The Great Gatsby ebook by F_ Scott Fitzgerald - Rakuten Kobo.jpeg') }}" alt="Chandelier 3">
+                </a>
+                <div class="caption">
+                    <p>Millionaire Jay Gatsby's obsession with Daisy Buchanan leads to tragedy.</p>
+                    <p class="price">Ksh 1000</p>
+                    <form action="{{ url_for('cart') }}" method="post">
+                        <input type="hidden" name="product_name" value="Millionaire Jay Gatsby's obsession with Daisy Buchanan leads to tragedy.">
+                        <input type="hidden" name="product_price" value="Ksh 1000">
+                        <button class="add-to-cart" type="submit">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+            <div class="product-item">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='Books/To Kill a Mockingbird.jpeg') }}" alt="Chandelier 3">
+                </a>
+                <div class="caption">
+                    <p>A young girl experiences racial injustice in the 1930s South.</p>
+                    <p class="price">Ksh 1500</p>
+                    <form action="{{ url_for('cart') }}" method="post">
+                        <input type="hidden" name="product_name" value="A young girl experiences racial injustice in the 1930s South.">
+                        <input type="hidden" name="product_price" value="Ksh 1500">
+                        <button class="add-to-cart" type="submit">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+            <div class="product-item">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='Books/1984.jpeg') }}" alt="Chandelier 3">
+                </a>
+                <div class="caption">
+                    <p>Dystopian future where totalitarian regime controls truth and individual thought.</p>
+                    <p class="price">Ksh 500</p>
+                    <form action="{{ url_for('cart') }}" method="post">
+                        <input type="hidden" name="product_name" value="Dystopian future where totalitarian regime controls truth and individual thought.">
+                        <input type="hidden" name="product_price" value="Ksh 500">
+                        <button class="add-to-cart" type="submit">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+            <div class="product-item">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='Books/pride and predujice.jpeg') }}" alt="Chandelier 3">
+                </a>
+                <div class="caption">
+                    <p>Romance and social critique within British landed gentry society.</p>
+                    <p class="price">Ksh 1500</p>
+                    <form action="{{ url_for('cart') }}" method="post">
+                        <input type="hidden" name="product_name" value="Romance and social critique within British landed gentry society.">
+                        <input type="hidden" name="product_price" value="Ksh 1500">
+                        <button class="add-to-cart" type="submit">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+            <div class="product-item">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='Books/The catcher in the rye.jpeg') }}" alt="Chandelier 3">
+                </a>
+                <div class="caption">
+                    <p>Teenage Holden Caulfield grapples with alienation and societal expectations.</p>
+                    <p class="price">Ksh 1000</p>
+                    <form action="{{ url_for('cart') }}" method="post">
+                        <input type="hidden" name="product_name" value="helo">
+                        <input type="hidden" name="product_price" value="Ksh 1000">
+                        <button class="add-to-cart" type="submit">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+
+        </section>
+
+
+
     </main>
 
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
         const hamburgerIcon = document.querySelector('.hamburger-icon');
         const genreMenu = document.querySelector('.genre-menu');
 
-        hamburgerIcon.addEventListener('click', () => {
+        hamburgerIcon.addEventListener('click', function() {
             genreMenu.classList.toggle('show');
         });
 
-        const cartIcon = document.querySelector('.cart-icon');
-        const cartCount = document.querySelector('.cart-count');
-        let cartItems = 0;
-
-        const addToCartButtons = document.querySelectorAll('.add-to-cart');
-        addToCartButtons.forEach((button) => {
-            button.addEventListener('click', () => {
-                cartItems++;
-                cartCount.textContent = cartItems;
-            });
+        // Close the menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!hamburgerIcon.contains(event.target) && !genreMenu.contains(event.target)) {
+                genreMenu.classList.remove('show');
+            }
         });
+       });
     </script>
 </body>
 </html>
