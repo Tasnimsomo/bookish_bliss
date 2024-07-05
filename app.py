@@ -196,7 +196,7 @@ def cart():
                 cart[item_index]['quantity'] = new_quantity
                 session['cart'] = cart
                 # Recalculate total cost, tax, and shipping
-                total = sum(item['price'] * item['quantity'] for item in cart)
+                total = sum(float(item['price']) * int(item['quantity']) for item in cart)
                 tax = total * 0.1
                 shipping = 15
                 return jsonify({'success': True, 'total': total, 'tax': tax, 'shipping': shipping})
@@ -213,19 +213,20 @@ def cart():
             return jsonify({'success': False})
 
         product_name = request.form['product_name']
-        product_price = int(request.form['product_price'])
+        product_price = float(request.form['product_price'])  # Ensure price is float
         cart = session.get('cart', [])
 
         if cart:  # Check if the cart is not empty
-            total = sum(item['price'] * item['quantity'] for item in cart)
+            total = sum(float(item['price']) * int(item['quantity']) for item in cart)
             tax = total * 0.1
             shipping = 15
         else:
             total = 0
             tax = 0
             shipping = 0
+
         # Check if the product already exists in the cart
-        existing_item = next((item for item in cart if item['name'] == product_name and item['price'] == product_price), None)
+        existing_item = next((item for item in cart if item['name'] == product_name and float(item['price']) == product_price), None)
 
         if existing_item:
             # If the product exists, increment its quantity
@@ -238,10 +239,12 @@ def cart():
         return redirect(url_for('cart'))
 
     cart = session.get('cart', [])
-    total = sum(item['price'] * item['quantity'] for item in cart)
+    total = sum(float(item['price']) * int(item['quantity']) for item in cart)
     tax = total * 0.1
     shipping = 15
     return render_template('cart.html', cart=cart, total=total, tax=tax, shipping=shipping)
-    
+
+
+
 if __name__ == '__main__':
     app.run(debug=True)

@@ -38,9 +38,9 @@ body, html {
 }
 
 .hamburger-icon span {
-    height: 2px;
+    height: 4px;
     width: 100%;
-    background-color: #333;
+    background-color: #a0c1e3;
     transition: all 0.3s ease;
 }
 
@@ -55,6 +55,7 @@ body, html {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     z-index: 1;
     min-width: 250px;
+    margin-bottom: 10px;
 }
 
 .genre-menu.show {
@@ -140,12 +141,17 @@ body, html {
 .profile-cart {
     display: flex;
     align-items: center;
+    font-size: 24px;
+    color: #a0c1e3;
+    padding-left: 10px;
+    gap: 20px;
 }
 
 .profile-icon, .cart-icon {
     color: #a0c1e3;
     font-size: 24px;
     margin-left: 15px;
+    padding-left: 10px;
 }
 
 .product-grid {
@@ -154,7 +160,7 @@ body, html {
     max-width: 100%;
     margin: 0 auto;
     grid-template-columns: repeat(3, 1fr);
-    margin-top: 80px;
+    margin-top: 10px;
 }
 
 .product-item {
@@ -216,7 +222,27 @@ body, html {
     margin: 5px 0;
     padding: 10px;
     text-align: center;
+} 
+
+.mystery {
+    font-size: 20px;
+    font-weight: bold;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    padding: 20px;
+    margin-top: 50px;
 }
+
+.mystery h1 {
+    white-space: nowrap; /* Prevent title from wrapping */
+    text-align: center;
+    color: skyblue;
+
+}
+.mystery h1:hover {
+    text-decoration: wavy;
+}
+
 
 @media (max-width: 1024px) {
     .product-grid {
@@ -226,7 +252,7 @@ body, html {
 
 @media only screen and (max-width: 768px) {
     .product-grid {
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
