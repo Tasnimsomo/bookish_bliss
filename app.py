@@ -241,11 +241,29 @@ def cart():
     return render_template('cart.html', cart=cart, total=total, tax=tax, shipping=shipping)
 
 @app.route('/checkout', methods=['GET'])
+@login_required
 def checkout():
     cart = session.get('cart', [])
     if not cart:
         return redirect(url_for('empty_cart'))
-    return render_template('checkout.html')
+
+    payment_details = calculate_payment(cart)
+    return render_template('checkout.html', cart=cart, **payment_details)
+
+def calculate_payment(cart):
+    total = sum(float(item['price'].split()[-1]) * int(item['quantity']) for item in cart)
+    tax = total * 0.1
+    shipping = 15
+    return {'total': total, 'tax': tax, 'shipping': shipping}
+
+@app.route('/empty_cart')
+def empty_cart():
+    return render_template('empty_cart.html')
+
+@app.route('/order_confirmed', methods=['GET'])
+@login_required
+def order_confirmed():
+    return render_template('order_confirmation.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

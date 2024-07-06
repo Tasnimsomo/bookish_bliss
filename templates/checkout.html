@@ -5,15 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='checkout.css') }}">
-
 </head>
 <body>
     <div class="container">
         <h1>Checkout</h1>
         <div class="checkout-grid">
             <div class="billing-details">
-                <h2>Billing Details</h2>
                 <form>
+                    <h2>Billing Details</h2>
                     <div class="form-group">
                         <label for="first-name">First name *</label>
                         <input type="text" id="first-name" required>
@@ -59,25 +58,16 @@
                 </form>
             </div>
             <div class="order-summary">
-                <h2>Place Order</h2>
+                <h2>Order Summary</h2>
+                <table>
                     <tfoot>
                         <tr>
                             <th>Total Amount</th>
-                            <td>KES 6,240</td>
+                            <td>KES {{ total }}</td>
                         </tr>
                         <tr>
-                            <th>Shipping</th>
-                            <td>
-                                <ul>
-                                    <li>Nairobi CBD: FREE</li>
-                                    <li>Rest of Nairobi, Central, Nyanza, Western, Nakuru, Naivasha, Eldoret, Coast (Not Lamu): KES 300</li>
-                                    <li>Turkana & North Eastern Region: KES 400</li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Total</th>
-                            <td>KES 1111</td>
+                            <th>Total Payment</th>
+                            <td>KES {{ total + tax + shipping }}</td>
                         </tr>
                     </tfoot>
                 </table>
@@ -94,7 +84,9 @@
                         <label for="mpesa-code">MPESA Confirmation Code *</label>
                         <input type="text" id="mpesa-code" required>
                     </div>
-                    <button type="submit" class="btn-primary">Place Order</button>
+                    <a href="{{ url_for('order_confirmed') }}" class="place order">
+                        <button type="submit" class="btn-primary" onclick="return validateForm()">Place Order</button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -102,5 +94,26 @@
     <div class="paragraph">
         <p>Thank you for shopping with us! Karibu tena</p>
     </div>
+
+<script>
+    function validateForm() {
+        var mpesaCode = document.getElementById('mpesa-code').value.trim();
+
+        // Check if mpesaCode is empty
+        if (mpesaCode === '') {
+            alert('Please enter your MPESA Confirmation Code.');
+            return false; // Prevent form submission
+        }
+
+        // Check if mpesaCode matches the MPESA format (example: SG39FMJV9D)
+        var mpesaRegex = /^[A-Z0-9]{10}$/;
+        if (!mpesaRegex.test(mpesaCode)) {
+            alert('MPESA Confirmation Code is wrong.');
+            return false; // Prevent form submission
+        }
+
+        return true; // Allow form submission
+    }
+</script>
 </body>
 </html>
