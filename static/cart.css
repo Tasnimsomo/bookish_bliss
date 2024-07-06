@@ -139,3 +139,14 @@ body {
     font-size: 28px;
     color: #4a90e2;
 }
+
+.checkout-btn {
+    display: block;
+    margin: 20px auto 0;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}

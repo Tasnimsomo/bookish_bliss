@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='checkout.css') }}">
+
+</head>
+<body>
+    <div class="container">
+        <h1>Checkout</h1>
+        <div class="checkout-grid">
+            <div class="billing-details">
+                <h2>Billing Details</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="first-name">First name *</label>
+                        <input type="text" id="first-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">Last name *</label>
+                        <input type="text" id="last-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="country">Country *</label>
+                        <select id="country" required>
+                            <option value="Kenya">Kenya</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="street-address">Street address *</label>
+                        <input type="text" id="street-address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="state-county">State / County *</label>
+                        <select id="state-county" required>
+                            <option value="">Select an option…</option>
+                            <!-- Add all counties here -->
+                             <!-- Example counties -->
+                             <option value="Nairobi">Nairobi</option>
+                             <option value="Nairobi">Nakuru</option>
+                             <option value="Nairobi">Kisumu</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone *</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email address *</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="order-notes">Order notes (optional)</label>
+                        <textarea id="order-notes"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="order-summary">
+                <h2>Place Order</h2>
+                    <tfoot>
+                        <tr>
+                            <th>Total Amount</th>
+                            <td>KES 6,240</td>
+                        </tr>
+                        <tr>
+                            <th>Shipping</th>
+                            <td>
+                                <ul>
+                                    <li>Nairobi CBD: FREE</li>
+                                    <li>Rest of Nairobi, Central, Nyanza, Western, Nakuru, Naivasha, Eldoret, Coast (Not Lamu): KES 300</li>
+                                    <li>Turkana & North Eastern Region: KES 400</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Total</th>
+                            <td>KES 1111</td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <div class="payment">
+                    <h3>Lipa na MPESA</h3>
+                    <p>Payment Instructions</p>
+                    <ol>
+                        <li>On your Safaricom phone go the M-PESA menu</li>
+                        <li>Select send money and then enter this number:  0720 290 800</li>
+                        <li>You will receive a confirmation SMS from M-PESA with a Confirmation Code.</li>
+                        <li>After you receive the confirmation code, please input your phone number and the confirmation code that you received from M-PESA below.</li>
+                    </ol>
+                    <div class="form-group">
+                        <label for="mpesa-code">MPESA Confirmation Code *</label>
+                        <input type="text" id="mpesa-code" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Place Order</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="paragraph">
+        <p>Thank you for shopping with us! Karibu tena</p>
+    </div>
+</body>
+</html>

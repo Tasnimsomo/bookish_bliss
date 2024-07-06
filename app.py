@@ -240,7 +240,12 @@ def cart():
     shipping = 15
     return render_template('cart.html', cart=cart, total=total, tax=tax, shipping=shipping)
 
-
+@app.route('/checkout', methods=['GET'])
+def checkout():
+    cart = session.get('cart', [])
+    if not cart:
+        return redirect(url_for('empty_cart'))
+    return render_template('checkout.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
