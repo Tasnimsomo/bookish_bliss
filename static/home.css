@@ -211,6 +211,13 @@ body, html {
     border-bottom-right-radius: 10px;
 }
 
+.caption h1 {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #333;
+    text-align: center;
+}
+
 .price {
     font-weight: bolder;
     align-items: center;
