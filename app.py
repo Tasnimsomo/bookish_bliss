@@ -185,7 +185,7 @@ def increase_book_amount():
 def cart():
     if request.method == 'POST':
         if 'clear_all' in request.form:
-            session.pop('cart', None)  # Clear the cart session
+            session.pop('cart', None)
             return redirect(url_for('cart'))
 
         if 'update_quantity' in request.form:
@@ -195,8 +195,7 @@ def cart():
             if 0 <= item_index < len(cart):
                 cart[item_index]['quantity'] = new_quantity
                 session['cart'] = cart
-                # Recalculate total cost, tax, and shipping
-                total = sum(float(item['price']) * int(item['quantity']) for item in cart)
+                total = sum(float(item['price'].split()[-1]) * int(item['quantity']) for item in cart)
                 tax = total * 0.1
                 shipping = 15
                 return jsonify({'success': True, 'total': total, 'tax': tax, 'shipping': shipping})
@@ -213,11 +212,11 @@ def cart():
             return jsonify({'success': False})
 
         product_name = request.form['product_name']
-        product_price = float(request.form['product_price'])  # Ensure price is float
+        product_price = float(request.form['product_price'].split()[-1])  # Remove 'Ksh' and convert to float
         cart = session.get('cart', [])
 
-        if cart:  # Check if the cart is not empty
-            total = sum(float(item['price']) * int(item['quantity']) for item in cart)
+        if cart:
+            total = sum(float(item['price'].split()[-1]) * int(item['quantity']) for item in cart)
             tax = total * 0.1
             shipping = 15
         else:
@@ -225,21 +224,18 @@ def cart():
             tax = 0
             shipping = 0
 
-        # Check if the product already exists in the cart
-        existing_item = next((item for item in cart if item['name'] == product_name and float(item['price']) == product_price), None)
+        existing_item = next((item for item in cart if item['name'] == product_name and float(item['price'].split()[-1]) == product_price), None)
 
         if existing_item:
-            # If the product exists, increment its quantity
             existing_item['quantity'] += 1
         else:
-            # If the product doesn't exist, add a new item to the cart
-            cart.append({'name': product_name, 'price': product_price, 'quantity': 1})
+            cart.append({'name': product_name, 'price': f"Ksh {product_price}", 'quantity': 1})
 
         session['cart'] = cart
         return redirect(url_for('cart'))
 
     cart = session.get('cart', [])
-    total = sum(float(item['price']) * int(item['quantity']) for item in cart)
+    total = sum(float(item['price'].split()[-1]) * int(item['quantity']) for item in cart)
     tax = total * 0.1
     shipping = 15
     return render_template('cart.html', cart=cart, total=total, tax=tax, shipping=shipping)

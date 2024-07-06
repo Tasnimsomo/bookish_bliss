@@ -16,8 +16,6 @@
         </div>
         <div class="cart-body">
             <div class="cart-items">
-                {% for item in cart %}
-                <div class="cart-items">
                     {% for item in cart %}
                     <div class="cart-item">
                         <div class="item-details">
@@ -32,8 +30,6 @@
                         </div>
                     </div>
                     {% endfor %}
-                </div>
-                {% endfor %}
             </div>
             {% if cart %}
             <div class="cart-total">
