@@ -3,34 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Store</title>
+    <title>Elegant Book Store</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="background-container">
-        <img src="{{ url_for('static', filename='Stylized photo.jpeg') }}" alt="Background" class="background-image">
+        <div class="overlay"></div>
     </div>
-    <div class="header">
-        <h1>Welcome to Online Book Store</h1>
-    </div>
+    <header>
+        <h1>Bookish Book Store </h1>
+    </header>
     <main>
         {% if not current_user.is_authenticated %}
-        <div class="login-options">
-            <div class="login-header">Login or Signup Below</div>
-            <div class="login-option"><a href="{{ url_for('admin') }}">Login As Admin</a></div>
-            <div class="login-option"><a href="{{ url_for('login') }}">Login As User</a></div>
-            <div class="login-option"><a href="{{ url_for('sign') }}">New user ! Register Here</a></div>
+        <div class="auth-container">
+            <h2>Welcome</h2>
+            <div class="auth-options">
+                <a href="{{ url_for('admin') }}" class="btn">Admin Login</a>
+                <a href="{{ url_for('login') }}" class="btn">User Login</a>
+                <a href="{{ url_for('sign') }}" class="btn">Register</a>
+            </div>
         </div>
         {% else %}
         <div class="user-profile">
             <h2>Welcome, {{ current_user.username }}</h2>
-            <div class="user-info">
-                <p>Email: {{ current_user.email }}</p>
-            </div>
-            {% if current_user.id == 1  %}
-            <div class="admin-options">
-                <a href="{{ url_for('admin') }}" class="btn">Admin Page</a>
-            </div>
+            <p>{{ current_user.email }}</p>
+            {% if current_user.id == 1 %}
+            <a href="{{ url_for('admin') }}" class="btn">Admin Panel</a>
             {% endif %}
             <a href="{{ url_for('logout') }}" class="btn">Logout</a>
         </div>
