@@ -183,6 +183,9 @@ def increase_book_amount():
 @app.route('/cart', methods=['GET', 'POST'])
 @login_required
 def cart():
+    cart = session.get('cart', [])
+    payment_details = calculate_payment(cart)
+    
     if request.method == 'POST':
         if 'clear_all' in request.form:
             session.pop('cart', None)
@@ -191,7 +194,6 @@ def cart():
         if 'update_quantity' in request.form:
             item_index = int(request.form['item_index'])
             new_quantity = int(request.form['new_quantity'])
-            cart = session.get('cart', [])
             if 0 <= item_index < len(cart):
                 cart[item_index]['quantity'] = new_quantity
                 session['cart'] = cart
@@ -203,7 +205,6 @@ def cart():
 
         if 'remove_item' in request.form:
             item_index = int(request.form['item_index'])
-            cart = session.get('cart', [])
             if 0 <= item_index < len(cart):
                 removed_item = cart.pop(item_index)
                 session['cart'] = cart
@@ -213,32 +214,13 @@ def cart():
 
         product_name = request.form['product_name']
         product_price = float(request.form['product_price'].split()[-1])  # Remove 'Ksh' and convert to float
-        cart = session.get('cart', [])
-
-        if cart:
-            total = sum(float(item['price'].split()[-1]) * int(item['quantity']) for item in cart)
-            tax = total * 0.1
-            shipping = 15
-        else:
-            total = 0
-            tax = 0
-            shipping = 0
-
-        existing_item = next((item for item in cart if item['name'] == product_name and float(item['price'].split()[-1]) == product_price), None)
-
-        if existing_item:
-            existing_item['quantity'] += 1
-        else:
-            cart.append({'name': product_name, 'price': f"Ksh {product_price}", 'quantity': 1})
-
+        cart.append({'name': product_name, 'price': f'Ksh {product_price}', 'quantity': 1})
         session['cart'] = cart
-        return redirect(url_for('cart'))
+        payment_details = calculate_payment(cart)
 
-    cart = session.get('cart', [])
-    total = sum(float(item['price'].split()[-1]) * int(item['quantity']) for item in cart)
-    tax = total * 0.1
-    shipping = 15
-    return render_template('cart.html', cart=cart, total=total, tax=tax, shipping=shipping)
+    return render_template('cart.html', cart=cart, **payment_details)
+
+
 
 @app.route('/checkout', methods=['GET'])
 @login_required
@@ -248,9 +230,13 @@ def checkout():
         return redirect(url_for('empty_cart'))
 
     payment_details = calculate_payment(cart)
+
+    session['cart'] = []
     return render_template('checkout.html', cart=cart, **payment_details)
 
 def calculate_payment(cart):
+    if not cart:
+        return {'total': 0, 'tax': 0, 'shipping': 0}
     total = sum(float(item['price'].split()[-1]) * int(item['quantity']) for item in cart)
     tax = total * 0.1
     shipping = 15

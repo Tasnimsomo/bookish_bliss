@@ -19,12 +19,12 @@
                 <nav class="genre-menu">
                     <h3>Browse Categories</h3>
                     <ul>
-                        <li><a href="#">Fiction</a></li>
-                        <li><a href="#">Non-Fiction</a></li>
-                        <li><a href="#">Romance</a></li>
-                        <li><a href="mystery">Mystery</a></li>
-                        <li><a href="#">Sci-Fi</a></li>
-                        <li><a href="#">Self Help</a></li>
+                        <li><a href="#fiction">Fiction</a></li>
+                        <li><a href="#self-help">Self Help</a></li>
+                        <li><a href="#romance">Romance</a></li>
+                        <li><a href="#mystery">Mystery</a></li>
+                        <li><a href="#sci-fi">Sci-Fi</a></li>
+                        <li><a href="#fantasy">Fantasy</a></li>
                     </ul>
                 </nav>
             </div>
@@ -49,6 +49,7 @@
     <section>
         
         <section class="product-grid">
+            <h2 id="mystery">Mystery</h2>
             <!-- mysterry -->
             <div class="product-item">
                 <a href="mystery">
@@ -146,6 +147,7 @@
             
 
             <!-- Sci-Fi -->
+            <h2 id="sci-fi">Sci-Fi</h2>
             <div class="product-item">
                 <a href="#">
                     <img src="{{ url_for('static', filename='Books/Dune.jpeg') }}" alt="Chandelier 3">
@@ -238,6 +240,7 @@
             </div>
 
             <!-- fantasy -->
+            <h2 id="fantasy">Fantasy</h2>
             <div class="product-item">
                 <a href="#">
                     <img src="{{ url_for('static', filename='Books/The Way of Kings.jpeg') }}" alt="Chandelier 3">
@@ -330,6 +333,7 @@
             </div>
 
             <!-- Romance -->
+            <h2 id="romance">Romance</h2>
             <div class="product-item">
                 <a href="#">
                     <img src="{{ url_for('static', filename='Books/It Ends With Us.jpeg') }}" alt="Chandelier 3">
@@ -423,6 +427,7 @@
             </div>
 
             <!-- Self-help books -->
+            <h2 id="self-help">Self Help</h2>
             <div class="product-item">
                 <a href="#">
                     <img src="{{ url_for('static', filename='Books/The 7 Habits of Highly Effective People.jpeg') }}" alt="Chandelier 3">
@@ -515,6 +520,7 @@
             </div>
 
             <!-- Fiction Novels Section -->
+            <h2 id="fiction">Fiction</h2>
             <div class="product-item">
                 <a href="#">
                     <img src="{{ url_for('static', filename='Books/The road.jpeg') }}" alt="Chandelier 3">
@@ -646,6 +652,21 @@
                 genreMenu.classList.remove('show');
             }
         });
+        // smooth scrolling
+        const genreLinks = document.querySelectorAll('.genre-menu a');
+    genreLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+                genreMenu.classList.remove('show');
+            }
+        });
+    });
        });
     </script>
 </body>
